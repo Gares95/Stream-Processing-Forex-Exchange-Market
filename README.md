@@ -44,7 +44,7 @@ This file provides the description of the program and the stream processing.
 
 ## Test
 
-To test this project it would only be necessary to run the client and the server on different terminal and it will be possible to see the real time output on the screen:
+To test this project, it would only be necessary to run the client and the server on different terminals and it will be possible to see the real time output on the screen:
 ![alt text](https://github.com/Gares95/Stream-Processing-Forex-Exchange-Market/blob/main/Img/Testing.PNG?raw=true)
 
 
