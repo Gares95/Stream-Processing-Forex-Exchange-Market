@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import socket 
 from bs4 import BeautifulSoup
 import requests
 def createMessage(unique_id, price):
@@ -14,17 +14,22 @@ def createMessage(unique_id, price):
     print(price_feed)
     return price_feed
 
-def sendMessages():
+def sendMessages(s):
     prices_list = ['EUR/USD', 'EUR/GBP', 'EUR/JPY', 'EUR/CHF', 'GBP/USD', 'USD/CNY']
     unique_id = 0
     
     while True:
         for p in prices_list:           
 
-            createMessage(unique_id, p)
+            s.send(createMessage(unique_id, p).encode('utf8'))
 
             unique_id = unique_id + 1
             
             
 if __name__ == '__main__':
-    sendMessages()
+    s = socket.socket()
+    host = socket.gethostname()
+    port = 9000
+    s.connect((host,port))
+
+    sendMessages(s)
