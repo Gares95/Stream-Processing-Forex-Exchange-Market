@@ -18,13 +18,11 @@ The market price feed will be given to you in CSV format line by line for EUR/US
 ## Scripts
 
 This repository includes the files necessary to:
-- Simulate a remote server with a messaging system feeding our own server with a stream of data line by line with the different FX market values.
+- Simulate a remote server with a messaging system feeding our own server with a stream of data line by line with different FX market values.
 - A stream processing system receiving the data will then process it (adding the margin of -0.1% on bid, +0.1% on ask) and publish it to a REST endpoint where we can assume there will be an interface using the input to show it directly to the client.
 
 ## Graph
-
-
-
+![alt text](https://github.com/Gares95/Stream-Processing-Forex-Exchange-Market/blob/main/Img/Diagram.png?raw=true)
 
 # Requirements
 For the _Client.py_ script to work it is necessary to install the library _bs4_ and _request_ to extract the ask and bid data from yahoo finance. 
@@ -43,6 +41,13 @@ With this file we will process all the data and publish it to REST endpoint (as 
 ## README.md
 
 This file provides the description of the program and the stream processing.
+
+## Test
+
+To test this project it would only be necessary to run the client and the server on different terminal and it will be possible to see the real time output on the screen:
+![alt text](https://github.com/Gares95/Stream-Processing-Forex-Exchange-Market/blob/main/Img/Testing.PNG?raw=true)
+
+
 
 # Possible Future Scenarios
 Using cloud services like AWS it would be possible to implement this program:  
