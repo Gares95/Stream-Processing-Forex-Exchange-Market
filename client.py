@@ -34,10 +34,12 @@ def sendMessages(s):
             
             
 if __name__ == '__main__':
+    print("Client started...")
     s = socket.socket()
     # We use gethostname() for local testing
     host = socket.gethostname()
     port = 9000
+    print("Starting connection by client...")
     s.connect((host,port))
 
     sendMessages(s)

@@ -61,10 +61,8 @@ if __name__ == '__main__':
 
     clientsocket,addr = serversocket.accept()
     with clientsocket:
-        print(f"Connected by {addr}")
+        print(f"Connected to {addr}")
         while True:
-            # clientsocket,addr = serversocket.accept()
-            print(f"Connected by {addr}")
 
             data = clientsocket.recv(1024)
             message = data.decode('utf8')
