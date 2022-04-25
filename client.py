@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 
 import time
+import random
 
 def createMessage(unique_id, price):
     url = 'https://finance.yahoo.com/quote/' + price.replace('/', '') + '%3DX'
