@@ -2,6 +2,8 @@ import socket
 
 from dataclasses import dataclass
 import json
+
+import requests
     
 @dataclass
 class Price:
@@ -65,4 +67,7 @@ if __name__ == '__main__':
             new_price = Price(*message.split(',')).serialize()
 
             print("Processed price: {}".format(new_price))
+
+            # To publish the data into a REST endpoint we would use PUT to the pertinent URL
+            # response = requests.put(url, json=new_price)
             
