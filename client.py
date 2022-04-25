@@ -19,7 +19,9 @@ def createMessage(unique_id, price):
     return price_feed
 
 def sendMessages(s):
+    # List of possible FX Market Values to download
     prices_list = ['EUR/USD', 'EUR/GBP', 'EUR/JPY', 'EUR/CHF', 'GBP/USD', 'USD/CNY']
+    # Assuming unique ID is going to change for each value downloaded (like the example provided)
     unique_id = 0
     
     while True:
@@ -33,6 +35,7 @@ def sendMessages(s):
             
 if __name__ == '__main__':
     s = socket.socket()
+    # We use gethostname() for local testing
     host = socket.gethostname()
     port = 9000
     s.connect((host,port))

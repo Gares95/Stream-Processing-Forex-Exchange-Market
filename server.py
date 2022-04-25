@@ -25,6 +25,8 @@ class Price:
         
     def calculate_new_price(self, operation, price):
         commission = float(price) * (0.1/100)
+
+        # (subtract from bid, add to ask)
         if(operation == "bid"):
             commission = commission*(-1)
         
@@ -44,24 +46,30 @@ class Price:
         )
 
 
-
 if __name__ == '__main__':
-    print("Starting Server...")
+    print("Server Started...")
 
     serversocket = socket.socket()
+    # We use gethostname() for local testing
     host = socket.gethostname()
     port = 9000
 
     serversocket.bind((host,port)) 
+    # Time out to interrupt process if client isn't runned
+    serversocket.settimeout(10)
     serversocket.listen(1)
+
     clientsocket,addr = serversocket.accept()
     with clientsocket:
         print(f"Connected by {addr}")
         while True:
+            # clientsocket,addr = serversocket.accept()
+            print(f"Connected by {addr}")
+
             data = clientsocket.recv(1024)
             message = data.decode('utf8')
-            # if not data:
-            #     break
+            if not data:
+                break
             print("Message recieved: {}".format(message))
 
             new_price = Price(*message.split(',')).serialize()
@@ -70,4 +78,7 @@ if __name__ == '__main__':
 
             # To publish the data into a REST endpoint we would use PUT to the pertinent URL
             # response = requests.put(url, json=new_price)
-            
+
+
+    serversocket.shutdown
+    serversocket.close()
