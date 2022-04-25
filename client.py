@@ -2,6 +2,9 @@ from datetime import datetime
 import socket 
 from bs4 import BeautifulSoup
 import requests
+
+import time
+
 def createMessage(unique_id, price):
     url = 'https://finance.yahoo.com/quote/' + price.replace('/', '') + '%3DX'
     headers = {"User-Agent":"Mozilla/5.0"}
@@ -24,6 +27,7 @@ def sendMessages(s):
             s.send(createMessage(unique_id, p).encode('utf8'))
 
             unique_id = unique_id + 1
+            time.sleep(random.random())
             
             
 if __name__ == '__main__':
